@@ -31,4 +31,9 @@ public class TransactionController {
         return transactionInterface.addTransaction(transactionDto);
     }
 
+    @PutMapping("/update")
+    TransactionDto updateTransaction(@RequestBody TransactionDto transactionDto){
+        return transactionInterface.updateTransaction(transactionDto);
+    }
+
 }
