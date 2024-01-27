@@ -43,7 +43,7 @@ public class Voiture {
     @OneToMany(mappedBy = "voiture")
     private List<Passager> listPassagers;
 
-    @OneToOne(mappedBy = "chauffeur", cascade = CascadeType.MERGE)
+    @OneToOne(mappedBy = "voiture", cascade = CascadeType.MERGE)
     private Chauffeur chauffeur;
     
 }
