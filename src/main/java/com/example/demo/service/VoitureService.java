@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.ChauffeurDto;
 import com.example.demo.dto.VoitureDto;
-import com.example.demo.entities.Chauffeur;
 import com.example.demo.entities.Voiture;
 import com.example.demo.repositories.VoitureRepository;
 import com.example.demo.service.interfaces.VoitureInterface;
