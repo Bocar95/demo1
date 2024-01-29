@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.example.demo.entities.Bagage;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +26,10 @@ public class BagageDto {
     private Long id;
     private String libelleBagage;
     private String typeBagage;
+    @NotNull(message = "La quantité de bagage est obligatoire")
+    @Min(value = 0, message = "La quantité de bagage doit être d'au moins 0")
     private Integer quantiteBagage;
+    @NotEmpty(message = "Le passager est obligatoire")
     private PassagerResumeDto passagerResumeDto;
 
     public static BagageDto fromEntity(Bagage bagage){

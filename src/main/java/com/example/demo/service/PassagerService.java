@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.PassagerDto;
+import com.example.demo.dto.PassagerResumeDto;
 import com.example.demo.entities.Passager;
 import com.example.demo.repositories.PassagerRepository;
 import com.example.demo.service.interfaces.PassagerInterface;
@@ -27,6 +28,16 @@ public class PassagerService implements PassagerInterface {
             passagerDtos = PassagerDto.fromEntities(passagers);
         }
         return passagerDtos;
+    }
+
+    @Override
+    public List<PassagerResumeDto> getAllPassagerResumeDto() {
+        List<PassagerResumeDto> passagerResumeDtos = new ArrayList<>();
+        List<Passager> passagers = passagerRepository.findAll();
+        if(passagers.size() > 0){
+            passagerResumeDtos = PassagerResumeDto.fromEntities(passagers);
+        }
+        return passagerResumeDtos;
     }
 
     @Override

@@ -91,6 +91,9 @@
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Type:</strong> <span th:text="${bagageDetail.typeBagage}"></span></li>
                             <li class="list-group-item"><strong>Quantité:</strong> <span th:text="${bagageDetail.quantiteBagage}"></span></li>
+                            <li class="list-group-item"><strong>Prénom passager:</strong> <span th:text="${bagageDetail.passagerResumeDto.prenomPassager}"></span></li>
+                            <li class="list-group-item"><strong>Nom passager:</strong> <span th:text="${bagageDetail.passagerResumeDto.nomPassager}"></span></li>
+                            <li class="list-group-item"><strong>Téléphone passager:</strong> <span th:text="${bagageDetail.passagerResumeDto.telephonePassager}"></span></li>
                         </ul>
                     </div>
                     <div class="card-footer text-muted">
@@ -98,6 +101,33 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+                <h2>Ajouter un bagage</h2>
+                <form th:object="${bagageDto}" th:action="@{/ajouter}" method="post">
+                    <div class="mb-3">
+                        <label for="libelleBagage" class="form-label">Libellé du bagage</label>
+                        <input type="text" class="form-control" id="libelleBagage" th:field="*{libelleBagage}">
+                        <div th:if="${#fields.hasErrors('libelleBagage')}" th:errors="*{libelleBagage}" class="text-danger"></div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="quantiteBagage" class="form-label">Quantité de bagage</label>
+                        <input type="number" class="form-control" id="quantiteBagage" th:field="*{quantiteBagage}">
+                        <div th:if="${#fields.hasErrors('quantiteBagage')}" th:errors="*{quantiteBagage}" class="text-danger"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="passagerResumeDto" class="form-label">Passager</label>
+                        <select class="form-select" id="passagerResumeDto" th:field="*{passagerResumeDto}">
+                            <option th:each="passager : ${passagers}" th:value="${passager.id}" th:text="${passager.prenomPassager}"></option>
+                        </select>
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

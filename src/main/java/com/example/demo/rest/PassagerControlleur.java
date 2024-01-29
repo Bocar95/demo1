@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.PassagerDto;
+import com.example.demo.dto.PassagerResumeDto;
 import com.example.demo.service.interfaces.PassagerInterface;
 
 @Controller
@@ -29,6 +30,10 @@ public class PassagerControlleur {
 
     public List<PassagerDto> getAllPassagerDto() {
         return passagerInterface.getAllPassagerDto();
+    }
+
+    public List<PassagerResumeDto> getAllPassagerResumeDto() {
+        return passagerInterface.getAllPassagerResumeDto();
     }
 
     public PassagerDto getPassagerDtoById(Long id) {
