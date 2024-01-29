@@ -2,13 +2,15 @@ package com.example.demo.rest;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.ChauffeurDto;
 import com.example.demo.service.interfaces.ChauffeurInterface;
 
-@RestController
+@Controller
 @RequestMapping("/chauffeur")
 public class ChauffeurController {
     
@@ -16,6 +18,13 @@ public class ChauffeurController {
 
     public ChauffeurController(ChauffeurInterface chauffeurInterface) {
         this.chauffeurInterface = chauffeurInterface;
+    }
+
+    @GetMapping("liste")
+    public String bagageIndex(Model model){
+        List<ChauffeurDto> chauffeurDtos = getAllChauffeurDtos();
+        model.addAttribute("chauffeurs", chauffeurDtos);
+        return "chauffeur";
     }
 
     public List<ChauffeurDto> getAllChauffeurDtos() {

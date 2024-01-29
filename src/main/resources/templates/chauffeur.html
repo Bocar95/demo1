@@ -50,28 +50,26 @@
     <div class="row">
         <div class="col-lg-8">
 
-            <!-- Affichage des Bagages -->
+            <!-- Affichage des Chauffeurs -->
             <div class="container mt-4">
-                <h2>Bagages</h2>
+                <h2>Chauffeurs</h2>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Libellé</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Quantité</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Téléphone</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="bagage : ${bagages}">
-                            <td th:text="${bagage.libelleBagage}"></td>
-                            <td th:text="${bagage.typeBagage}"></td>
-                            <td th:text="${bagage.quantiteBagage}"></td>
+                        <tr th:each="chauffeur : ${chauffeurs}">
+                            <td th:text="${chauffeur.nomChauffeur}"></td>
+                            <td th:text="${chauffeur.prenomChauffeur}"></td>
+                            <td th:text="${chauffeur.telephoneChauffeur}"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-
         </div>
 
         <!-- Sidebar -->
