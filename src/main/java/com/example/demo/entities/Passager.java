@@ -45,7 +45,7 @@ public class Passager {
     private List<Bagage> listBagages;
 
     @ManyToOne
-    @JoinColumn(name = "id_voiture", nullable = false)
+    @JoinColumn(name = "id_voiture", nullable = true)
     private Voiture voiture;
 
 }
