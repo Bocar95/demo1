@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.BagageDto;
@@ -24,6 +25,13 @@ public class BagageControlleur {
     public String bagageIndex(Model model){
         List<BagageDto> bagageDtos = getAllBagageDtos();
         model.addAttribute("bagages", bagageDtos);
+        return "bagage";
+    }
+
+    @GetMapping("{id}")
+    public String bagageById(Model model, @PathVariable Long id){
+        BagageDto bagageDto = getBagageDtoById(id);
+        model.addAttribute("bagageDetail", bagageDto);
         return "bagage";
     }
 

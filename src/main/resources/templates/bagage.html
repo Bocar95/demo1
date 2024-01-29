@@ -59,6 +59,7 @@
                             <th scope="col">Libellé</th>
                             <th scope="col">Type</th>
                             <th scope="col">Quantité</th>
+                            <th scope="col">Détail</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,39 +67,35 @@
                             <td th:text="${bagage.libelleBagage}"></td>
                             <td th:text="${bagage.typeBagage}"></td>
                             <td th:text="${bagage.quantiteBagage}"></td>
+                            <td>
+                                <a class="btn btn-secondary" th:href="${bagage.id}">
+                                    +
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
-
         </div>
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            <div class="card my-4">
-                <h5 class="card-header">Recherche</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Rechercher...">
-                        <span class="input-group-append">
-                                <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
+        <!-- Détails du Bagage -->
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Détails</h2>
                     </div>
-                </div>
-            </div>
-
-            <div class="card my-4">
-                <h5 class="card-header">Articles populaires</h5>
-                <div class="card-body">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">Titre de l'article populaire</a>
-                        </li>
-                        <li>
-                            <a href="#">Autre article populaire</a>
-                        </li>
-                    </ul>
+                    <div class="card-body" th:each="bagage : ${bagageDetail}">
+                        <p class="card-text" th:text="${bagageDetail.libelleBagage}"></p>
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Type:</strong> <span th:text="${bagageDetail.typeBagage}"></span></li>
+                            <li class="list-group-item"><strong>Quantité:</strong> <span th:text="${bagageDetail.quantiteBagage}"></span></li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <p>2024-01-29</p>
+                    </div>
                 </div>
             </div>
         </div>
