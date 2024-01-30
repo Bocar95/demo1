@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.ChauffeurDto;
+import com.example.demo.dto.ChauffeurResumeDto;
 import com.example.demo.dto.VoitureResumeDto;
 import com.example.demo.service.interfaces.ChauffeurInterface;
 
@@ -59,6 +60,10 @@ public class ChauffeurController {
 
     public List<ChauffeurDto> getAllChauffeurDtos() {
         return chauffeurInterface.getAllChauffeurDtos();
+    }
+
+    public List<ChauffeurResumeDto> getAllChauffeurResumeDtos() {
+        return chauffeurInterface.getChauffeurResumeDtos();
     }
 
     public ChauffeurDto getChauffeurDtoById(Long id) {

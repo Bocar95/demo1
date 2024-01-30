@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,9 +22,7 @@ public class VoitureDto {
     private Long id;
     private String typeVoiture;
     private String matriculeVoiture;
-    private LocalDateTime dateHeureDepart;
     private String destinationVoiture;
-    private List<PassagerResumeDto> listPassagerResumeDtos;
     private ChauffeurResumeDto chauffeurResumeDto;
     
     public static VoitureDto fromEntity(Voiture voiture){
@@ -36,9 +33,7 @@ public class VoitureDto {
             .id(voiture.getId())
             .typeVoiture(voiture.getTypeVoiture())
             .matriculeVoiture(voiture.getMatriculeVoiture())
-            .dateHeureDepart(voiture.getDateHeureDepart())
             .destinationVoiture(voiture.getDestinationVoiture())
-            .listPassagerResumeDtos(PassagerResumeDto.fromEntities(voiture.getListPassagers()))
             .chauffeurResumeDto(ChauffeurResumeDto.fromEntity(voiture.getChauffeur()))
             .build();
     }
@@ -58,9 +53,7 @@ public class VoitureDto {
         voiture.setId(voitureDto.getId());
         voiture.setTypeVoiture(voitureDto.getTypeVoiture());
         voiture.setMatriculeVoiture(voitureDto.getMatriculeVoiture());
-        voiture.setDateHeureDepart(voitureDto.getDateHeureDepart());
         voiture.setDestinationVoiture(voitureDto.getDestinationVoiture());
-        voiture.setListPassagers(PassagerResumeDto.toEntities(voitureDto.getListPassagerResumeDtos()));
         voiture.setChauffeur(ChauffeurResumeDto.toEntity(voitureDto.getChauffeurResumeDto()));
 
         return voiture;

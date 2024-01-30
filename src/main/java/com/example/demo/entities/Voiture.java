@@ -1,6 +1,5 @@
 package com.example.demo.entities;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,9 +32,6 @@ public class Voiture {
 
     @Column(name = "matricule_voiture")
     private String matriculeVoiture;
-
-    @Column(name = "date_heure_depart")
-    private LocalDateTime dateHeureDepart;
 
     @Column(name = "destination_voiture")
     private String destinationVoiture;

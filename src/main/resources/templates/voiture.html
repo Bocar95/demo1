@@ -58,12 +58,20 @@
                         <tr>
                             <th scope="col">Matricule</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Détail</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="voiture : ${voitures}">
                             <td th:text="${voiture.matriculeVoiture}"></td>
                             <td th:text="${voiture.typeVoiture}"></td>
+                            <td th:text="${voiture.destinationVoiture}"></td>
+                            <td>
+                                <a class="btn btn-secondary" th:href="${voiture.id}">
+                                    +
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,29 +81,58 @@
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            <div class="card my-4">
-                <h5 class="card-header">Recherche</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Rechercher...">
-                        <span class="input-group-append">
-                                <button class="btn btn-secondary" type="button">Go!</button>
-                            </span>
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Détails</h2>
+                    </div>
+                    <div class="card-body" th:each="voitureDetail : ${voitureDetail}">
+                        <p class="card-text" th:text="${voitureDetail.typeVoiture}"></p>
+                        <ul class="list-group">
+                            <li class="list-group-item"><strong>Matricule:</strong> <span th:text="${voitureDetail.matriculeVoiture}"></span></li>
+                            <li class="list-group-item"><strong>Destination:</strong> <span th:text="${voitureDetail.destinationVoiture}"></span></li>
+                            <li class="list-group-item"><strong>Prénom chauffeur:</strong> <span th:text="${voitureDetail.chauffeurResumeDto.prenomChauffeur}"></span></li>
+                            <li class="list-group-item"><strong>Nom chauffeur:</strong> <span th:text="${voitureDetail.chauffeurResumeDto.nomChauffeur}"></span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="card my-4">
-                <h5 class="card-header">Articles populaires</h5>
-                <div class="card-body">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">Titre de l'article populaire</a>
-                        </li>
-                        <li>
-                            <a href="#">Autre article populaire</a>
-                        </li>
-                    </ul>
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Ajouter une voiture</h2>
+                    </div>
+                    <div class="card-body">
+                        <form th:object="${voitureDto}" th:action="@{ajouter}" method="post">
+                            <div class="mb-3">
+                                <label for="matriculeVoiture" class="form-label">Matricule</label>
+                                <input type="text" class="form-control" id="matriculeVoiture" th:field="*{matriculeVoiture}">
+                                <div th:if="${#fields.hasErrors('matriculeVoiture')}" th:errors="*{matriculeVoiture}" class="text-danger"></div>
+                            </div>
+                    
+                            <div class="mb-3">
+                                <label for="typeVoiture" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="typeVoiture" th:field="*{typeVoiture}">
+                                <div th:if="${#fields.hasErrors('typeVoiture')}" th:errors="*{typeVoiture}" class="text-danger"></div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="destinationVoiture" class="form-label">Destination</label>
+                                <input type="text" class="form-control" id="destinationVoiture" th:field="*{destinationVoiture}">
+                                <div th:if="${#fields.hasErrors('destinationVoiture')}" th:errors="*{destinationVoiture}" class="text-danger"></div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="chauffeurResumeDto" class="form-label">Chauffeur</label>
+                                <select class="form-select" id="chauffeurResumeDto" th:field="*{chauffeurResumeDto.id}">
+                                    <option th:each="chauffeurResumeDto : ${chauffeurResumeDtos}" th:value="${chauffeurResumeDto.id}" th:text="${chauffeurResumeDto.prenomChauffeur}"></option>
+                                </select>
+                            </div>
+                    
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

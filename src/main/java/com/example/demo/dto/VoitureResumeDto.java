@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +22,6 @@ public class VoitureResumeDto {
     private Long id;
     private String typeVoiture;
     private String matriculeVoiture;
-    private LocalDateTime dateHeureDepart;
     private String destinationVoiture;
     
     public static VoitureResumeDto fromEntity(Voiture voiture){
@@ -34,7 +32,6 @@ public class VoitureResumeDto {
             .id(voiture.getId())
             .typeVoiture(voiture.getTypeVoiture())
             .matriculeVoiture(voiture.getMatriculeVoiture())
-            .dateHeureDepart(voiture.getDateHeureDepart())
             .destinationVoiture(voiture.getDestinationVoiture())
             .build();
     }
@@ -54,7 +51,6 @@ public class VoitureResumeDto {
         voiture.setId(voitureResumeDto.getId());
         voiture.setTypeVoiture(voitureResumeDto.getTypeVoiture());
         voiture.setMatriculeVoiture(voitureResumeDto.getMatriculeVoiture());
-        voiture.setDateHeureDepart(voitureResumeDto.getDateHeureDepart());
         voiture.setDestinationVoiture(voitureResumeDto.getDestinationVoiture());
 
         return voiture;
