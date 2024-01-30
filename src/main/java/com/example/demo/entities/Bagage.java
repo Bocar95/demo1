@@ -33,7 +33,7 @@ public class Bagage {
     private Integer quantiteBagage;
 
     @ManyToOne
-    @JoinColumn(name = "id_passager", nullable = false)
+    @JoinColumn(name = "id_passager", nullable = true)
     private Passager passager;
     
 }

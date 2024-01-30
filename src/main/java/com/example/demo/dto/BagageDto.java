@@ -24,12 +24,14 @@ import lombok.Setter;
 public class BagageDto {
 
     private Long id;
+    @NotEmpty(message = "Le libellé est obligatoire")
     private String libelleBagage;
+    @NotEmpty(message = "Le type est obligatoire")
     private String typeBagage;
     @NotNull(message = "La quantité de bagage est obligatoire")
     @Min(value = 0, message = "La quantité de bagage doit être d'au moins 0")
     private Integer quantiteBagage;
-    @NotEmpty(message = "Le passager est obligatoire")
+    @NotNull(message = "Le passager du bagage est obligatoire")
     private PassagerResumeDto passagerResumeDto;
 
     public static BagageDto fromEntity(Bagage bagage){

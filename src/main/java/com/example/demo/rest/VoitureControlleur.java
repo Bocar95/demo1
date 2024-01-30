@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dto.VoitureDto;
+import com.example.demo.dto.VoitureResumeDto;
 import com.example.demo.service.interfaces.VoitureInterface;
 
 @Controller
@@ -29,6 +30,10 @@ public class VoitureControlleur {
 
     public List<VoitureDto> getAllVoitureDto() {
         return voitureInterface.getAllVoitureDto();
+    }
+
+    public List<VoitureResumeDto> getVoitureResumeDtos() {
+        return voitureInterface.getVoitureResumeDtos();
     }
 
     public VoitureDto getVoitureDtoById(Long id) {

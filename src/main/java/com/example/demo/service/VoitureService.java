@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.VoitureDto;
+import com.example.demo.dto.VoitureResumeDto;
 import com.example.demo.entities.Voiture;
 import com.example.demo.repositories.VoitureRepository;
 import com.example.demo.service.interfaces.VoitureInterface;
@@ -27,6 +28,16 @@ public class VoitureService implements VoitureInterface {
             voitureDtos = VoitureDto.fromEntities(voitures);
         }
         return voitureDtos;
+    }
+
+    @Override
+    public List<VoitureResumeDto> getVoitureResumeDtos() {
+        List<VoitureResumeDto> voitureResumeDtos = new ArrayList<>();
+        List<Voiture> voitures = voitureRepository.findAll();
+        if(voitures.size() > 0){
+            voitureResumeDtos = VoitureResumeDto.fromEntities(voitures);
+        }
+        return voitureResumeDtos;
     }
 
     @Override

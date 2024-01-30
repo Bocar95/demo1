@@ -34,7 +34,8 @@ public class BagageControlleur {
         List<BagageDto> bagageDtos = getAllBagageDtos();
         List<PassagerResumeDto> passagerResumeDtos = passagerControlleur.getAllPassagerResumeDto();
         model.addAttribute("bagages", bagageDtos);
-        model.addAttribute("passagers", passagerResumeDtos);
+        model.addAttribute("passagerResumeDtos", passagerResumeDtos);
+        model.addAttribute("bagageDto", new BagageDto());
         return "bagage";
     }
 
@@ -50,6 +51,7 @@ public class BagageControlleur {
         if (result.hasErrors()) {
             return "redirect:/bagage/liste";
         }
+
         addBagageDto(bagageDto);
         return "redirect:/bagage/liste";
     }

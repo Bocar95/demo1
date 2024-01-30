@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ChauffeurDto;
+import com.example.demo.dto.ChauffeurResumeDto;
 import com.example.demo.entities.Chauffeur;
 import com.example.demo.repositories.ChauffeurRepository;
 import com.example.demo.service.interfaces.ChauffeurInterface;
@@ -27,6 +28,16 @@ public class ChauffeurService implements ChauffeurInterface {
             chauffeurDtos = ChauffeurDto.fromEntities(chauffeurs);
         }
         return chauffeurDtos;
+    }
+
+    @Override
+    public List<ChauffeurResumeDto> getChauffeurResumeDtos() {
+        List<ChauffeurResumeDto> chauffeurResumeDtos = new ArrayList<>();
+        List<Chauffeur> chauffeurs = chauffeurRepository.findAll();
+        if(chauffeurs.size() > 0){
+            chauffeurResumeDtos = ChauffeurResumeDto.fromEntities(chauffeurs);
+        }
+        return chauffeurResumeDtos;
     }
 
     @Override
