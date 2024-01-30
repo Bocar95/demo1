@@ -40,7 +40,7 @@ public class Chauffeur {
     private Integer numeroPermisChauffeur;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_voiture", referencedColumnName = "id")
+    @JoinColumn(name = "id_voiture", referencedColumnName = "id",nullable = true)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Voiture voiture;
     

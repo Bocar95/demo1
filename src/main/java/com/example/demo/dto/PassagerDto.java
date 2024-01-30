@@ -25,7 +25,7 @@ public class PassagerDto {
     private String adressePassager;
     private Integer telephonePassager;
     private Integer cniPassager;
-    private List<BagageResumeDto> listBagageResumeDtos;
+    // private List<BagageResumeDto> listBagageResumeDtos;
     private VoitureResumeDto voitureResumeDto;
 
 
@@ -40,7 +40,6 @@ public class PassagerDto {
             .adressePassager(passager.getAdressePassager())
             .telephonePassager(passager.getTelephonePassager())
             .cniPassager(passager.getCniPassager())
-            .listBagageResumeDtos(BagageResumeDto.fromEntities(passager.getListBagages()))
             .voitureResumeDto(VoitureResumeDto.fromEntity(passager.getVoiture()))
             .build();
     }
@@ -63,7 +62,6 @@ public class PassagerDto {
         passager.setAdressePassager(passagerDto.getAdressePassager());
         passager.setTelephonePassager(passagerDto.getTelephonePassager());
         passager.setCniPassager(passagerDto.getCniPassager());
-        passager.setListBagages(BagageResumeDto.toEntities(passagerDto.getListBagageResumeDtos()));
         passager.setVoiture(VoitureResumeDto.toEntity(passagerDto.getVoitureResumeDto()));
 
         return passager;

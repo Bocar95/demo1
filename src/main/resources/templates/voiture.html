@@ -87,12 +87,10 @@
                         <h2 class="card-title">Détails</h2>
                     </div>
                     <div class="card-body" th:each="voitureDetail : ${voitureDetail}">
-                        <p class="card-text" th:text="${voitureDetail.typeVoiture}"></p>
                         <ul class="list-group">
                             <li class="list-group-item"><strong>Matricule:</strong> <span th:text="${voitureDetail.matriculeVoiture}"></span></li>
+                            <li class="list-group-item"><strong>Type:</strong> <span th:text="${voitureDetail.typeVoiture}"></span></li>
                             <li class="list-group-item"><strong>Destination:</strong> <span th:text="${voitureDetail.destinationVoiture}"></span></li>
-                            <li class="list-group-item"><strong>Prénom chauffeur:</strong> <span th:text="${voitureDetail.chauffeurResumeDto.prenomChauffeur}"></span></li>
-                            <li class="list-group-item"><strong>Nom chauffeur:</strong> <span th:text="${voitureDetail.chauffeurResumeDto.nomChauffeur}"></span></li>
                         </ul>
                     </div>
                 </div>
@@ -123,12 +121,13 @@
                                 <div th:if="${#fields.hasErrors('destinationVoiture')}" th:errors="*{destinationVoiture}" class="text-danger"></div>
                             </div>
                             
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="chauffeurResumeDto" class="form-label">Chauffeur</label>
                                 <select class="form-select" id="chauffeurResumeDto" th:field="*{chauffeurResumeDto.id}">
+                                    <option value="">Sélectionner</option>
                                     <option th:each="chauffeurResumeDto : ${chauffeurResumeDtos}" th:value="${chauffeurResumeDto.id}" th:text="${chauffeurResumeDto.prenomChauffeur}"></option>
                                 </select>
-                            </div>
+                            </div> -->
                     
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </form>

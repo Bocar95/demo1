@@ -126,12 +126,16 @@
                             <div class="mb-3">
                                 <label for="passagerResumeDto" class="form-label">Passager</label>
                                 <select class="form-select" id="passagerResumeDto" th:field="*{passagerResumeDto.id}">
+                                    <option value="">Sélectionner</option>
                                     <option th:each="passagerResumeDto : ${passagerResumeDtos}" th:value="${passagerResumeDto.id}" th:text="${passagerResumeDto.prenomPassager}"></option>
                                 </select>
                             </div>
                     
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </form>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-danger">Vous devez d'abord ajouter les passagers.</p>
                     </div>
                 </div>
             </div>
